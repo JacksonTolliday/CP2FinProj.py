@@ -2,8 +2,8 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 
 class Textrunner(App):
     def __init__(self):
-        Txt = TextAsset
         super().__init__()
+        Txt = TextAsset
         self.listenKeyEvent("keydown", "enter", self.nxt)
         
     def nxt:
