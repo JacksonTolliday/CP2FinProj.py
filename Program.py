@@ -4,7 +4,7 @@ class Score(Sprite):
 
     def __init__(self, app, position):
         global Game
-        asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width, fill=Color(0x000000, 1.0))
+        asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width-20, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
         
 
