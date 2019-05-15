@@ -26,7 +26,7 @@ class Game(App):
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.x = ""
         self.score = ""+str(self.x)
-        self.strt = True
+        self.strt = 0
         self.scorprint = Score(self, (10,Game.height-150))
 
     def start(self):
