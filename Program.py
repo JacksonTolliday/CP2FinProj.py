@@ -1,6 +1,6 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
 
-def Textrunner(App):
+class Textrunner(App):
     def __init__(self):
         Txt = TextAsset
         super().__init__()
