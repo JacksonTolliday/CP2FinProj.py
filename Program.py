@@ -7,12 +7,6 @@ class Score(Sprite):
         asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width-20, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
         
-
-class Lives(Sprite):
-
-    def __init__(self, app, position):
-        asset = TextAsset(app.lives, style="15pt Comic Sans", width=250, fill=Color(0x000000, 1.0))
-        super().__init__(asset, position)
     
 class End(Sprite):
 
@@ -32,8 +26,7 @@ class Game(App):
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.x = ""
         self.score = self.x 
-        self.strt = True
-        self.lives = "Lives: "+str(self.l)
+        self.strt = 0
         self.livprint = Lives(self, (Game.width-260,10))
         self.scorprint = Score(self, (10,Game.height-150))
 
