@@ -1,10 +1,10 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
 
-class Score(Sprite):
+class Text(Sprite):
 
     def __init__(self, app, position):
         global Game
-        asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width-20, fill=Color(0x000000, 1.0))
+        asset = TextAsset(app.text, style="15pt Times New Roman", width=Game.width-20, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
         
 
@@ -21,33 +21,24 @@ class End(Sprite):
         super().__init__(asset, position)
 
 class Game(App):
-    """
-    Tutorial4 space game example.
-    """
     def __init__(self):
         super().__init__()
-        # Background
         black = Color(0, 1)
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
-        self.x = ""
-        self.score = self.x 
-        self.l = 0
-        self.lives = "Lives: "+str(self.l)
+        self.text = ""
         self.livprint = Lives(self, (Game.width-260,10))
-        self.scorprint = Score(self, (10,Game.height-150))
+        self.textprint = Text(self, (10,Game.height-150))
 
-    def step(self):
-        if self.l == 0:
-            self.x = "c or g?"
-            self.listenKeyEvent("keydown", "c", self.l=1)
-            self.listenKeyEvent("keydown", "g", self.l=2)
-        if self.l == 1:
-            self.x = "c"
-        if self.l == 2:
-            self.x = "g"
-        
+    def start(self):
+        self.text = "c or g?"
+        self.listenKeyEvent("keydown", "c", self.c1)
+        self.listenKeyEvent("keydown", "g", self.g1)
 
+    def c1(self):
+        self.text = "c"
+    def g1(self):
+        self.text = "g"
 Game().run()
 '''
 HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
