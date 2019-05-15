@@ -27,7 +27,6 @@ class Game(App):
         self.x = ""
         self.score = self.x 
         self.strt = 0
-        self.livprint = Lives(self, (Game.width-260,10))
         self.scorprint = Score(self, (10,Game.height-150))
 
     def start(self):
