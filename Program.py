@@ -30,9 +30,8 @@ class Game(App):
         black = Color(0, 1)
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
-        self.x = 0
-        self.score = "Score: "+str(self.x)
-        self.l = 5
+        self.score = "HMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+        self.l = 1
         self.lives = "Lives: "+str(self.l)
         self.livprint = Lives(self, (Game.width-260,10))
         self.scorprint = Score(self, (10,Game.height-150))
