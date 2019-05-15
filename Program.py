@@ -8,6 +8,8 @@ class Textrunner(App):
 
 
     def nxt(self, event):
-        for x in prompts:
+        for x in self.prompts:
             print(x)
             x = x+1
+
+    def prompts(self, position)
