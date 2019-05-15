@@ -3,20 +3,20 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 class Score(Sprite):
 
     def __init__(self, app, position):
-        asset = TextAsset(app.score, style="30pt Times New Roman", width=250, fill=Color(0x000000, 1.0))
+        asset = TextAsset(app.score, style="15pt Times New Roman", width=250, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
         
 
 class Lives(Sprite):
 
     def __init__(self, app, position):
-        asset = TextAsset(app.lives, style="30pt Comic Sans", width=250, fill=Color(0x000000, 1.0))
+        asset = TextAsset(app.lives, style="15pt Comic Sans", width=250, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
     
 class End(Sprite):
 
     def __init__(self, app, position):
-        asset = TextAsset('Game Over!', style="53pt Comic Sans", width=400, fill=Color(0x800000, 1.0))
+        asset = TextAsset('Game Over!', style="53pt Times New Roman", width=400, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
 
 class Game(App):
