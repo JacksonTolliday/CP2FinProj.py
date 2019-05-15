@@ -25,23 +25,17 @@ class Game(App):
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.score = ""
         self.scorprint = Score(self, (10,Game.height-150))
-        self.start
+        self.step
 
-    def start(self):
+    def step(self):
         self.score = "Press Enter to Continue"
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
-        self.listenKeyEvent("keydown", "c", self.c1)
-        self.listenKeyEvent("keydown", "g", self.g1)
+        self.listenKeyEvent("keydown", "enter", self.enter1)
 
+    def enter1(self, event):
+        self.x = "c or g?"
 
-    def c1(self):
-        if self.strt == 1:
-            self.x = "c. t or r?"
-
-    def g1(self):
-        if self.strt == 1:
-            self.x = "g. h or j?"
 
 Game().run()
 '''
