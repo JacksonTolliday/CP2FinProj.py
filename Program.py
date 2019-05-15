@@ -5,7 +5,7 @@ class Textrunner(App):
         super().__init__()
         Txt = TextAsset(Textrunner.prompts, style="30pt Times New Roman", width=400, fill=Color(0x000000, 1.0))
         self.listenKeyEvent("keydown", "enter", self.nxt)
-        
+
 
     def nxt:
         for x in prompts:
