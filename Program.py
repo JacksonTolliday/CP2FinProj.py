@@ -34,7 +34,7 @@ class Game(App):
         self.l = 5
         self.lives = "Lives: "+str(self.l)
         self.livprint = Lives(self, (Game.width-260,10))
-        self.scorprint = Score(self, (10,Game.height-10))
+        self.scorprint = Score(self, (10,Game.height-200))
         self.steprun = 0
         self.sc = 0
 
