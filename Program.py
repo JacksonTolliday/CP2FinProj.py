@@ -30,20 +30,29 @@ class Game(App):
         black = Color(0, 1)
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
-        self.score = "HMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-        self.l = 1
+        self.x = ""
+        self.score = self.x 
+        self.l = 0
         self.lives = "Lives: "+str(self.l)
         self.livprint = Lives(self, (Game.width-260,10))
         self.scorprint = Score(self, (10,Game.height-150))
-        self.steprun = 0
-        self.sc = 0
 
     def step(self):
-        if self.l > 0:
-            pass
+        if self.l == 0:
+            self.x = "c or g?"
+            self.listenKeyEvent("keydown", "c", self.l=1)
+            self.listenKeyEvent("keydown", "g", self.l=2)
+        if self.l == 1:
+            self.x = "c"
+        if self.l == 2:
+            self.x = "g"
+        
 
 Game().run()
-'''class Textrunner(App):
+'''
+HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+class Textrunner(App):
     def __init__(self):
         super().__init__()
         Txt = TextAsset(Textrunner.prompts, style="30pt Times New Roman", width=400, fill=Color(0x000000, 1.0))
