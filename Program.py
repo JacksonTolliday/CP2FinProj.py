@@ -31,6 +31,9 @@ class Game(App):
 
     def start(self):
         if self.strt == 0:
+            self.score = ""+str(self.x)
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
             self.x = "c or g?"
             self.listenKeyEvent("keydown", "c", self.c1)
             self.listenKeyEvent("keydown", "g", self.g1)
