@@ -45,8 +45,12 @@ class Game(App):
             self.strt = 1
 
     def c1(self):
+        if self.strt == 1:
+            self.x = "c. t or r?"
 
     def g1(self):
+        if self.strt == 1:
+            self.x = "g. h or j?"
 
 Game().run()
 '''
