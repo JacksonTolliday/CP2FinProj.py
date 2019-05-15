@@ -20,24 +20,20 @@ class Game(App):
     """
     def __init__(self):
         super().__init__()
-        # Background
         black = Color(0, 1)
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
-        self.x = ""
-        self.score = ""+str(self.x)
-        self.strt = 0
+        self.score = ""
         self.scorprint = Score(self, (10,Game.height-150))
+        self.start
 
     def start(self):
-        if self.strt == 0:
-            self.score = ""+str(self.x)
-            self.scorprint.destroy()
-            self.scorprint = Score(self, (10,Game.height-150))
-            self.x = "c or g?"
-            self.listenKeyEvent("keydown", "c", self.c1)
-            self.listenKeyEvent("keydown", "g", self.g1)
-            self.strt = 1
+        self.score = "Press Enter to Continue"
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "c", self.c1)
+        self.listenKeyEvent("keydown", "g", self.g1)
+
 
     def c1(self):
         if self.strt == 1:
