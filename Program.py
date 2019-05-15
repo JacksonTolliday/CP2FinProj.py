@@ -3,7 +3,7 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 class Textrunner(App):
     def __init__(self):
         super().__init__()
-        Txt(x) = TextAsset(x, style="30pt Times New Roman", width=400, fill=Color(0x000000, 1.0))
+        Txt(x) = TextAsset('x', style="30pt Times New Roman", width=400, fill=Color(0x000000, 1.0))
         self.listenKeyEvent("keydown", "enter", self.nxt)
         
 
