@@ -28,15 +28,7 @@ class Game(App):
         # Background
         black = Color(0, 1)
         noline = LineStyle(0, black)
-        pic_asset = ImageAsset("images/backgroundexperiment.png", Frame(0, 0, 960, 672), 1, 'horizontal')
-        linpic_asset = ImageAsset("images/Game_Background_701.jpg", Frame(0, 0, 1280, 640), 1, 'horizontal')
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
-        self.bg1 = Sprite(linpic_asset, (0,-60))
-        self.bg2 = Sprite(linpic_asset, (1152,-60))
-        self.bg1.scale = 0.9
-        self.bg2.scale = 0.9
-        Game.os = ObstacleS((0,369))
-        Game.Pal = Person((Game.width/2,400))
         self.x = 0
         self.score = "Score: "+str(self.x)
         self.l = 5
@@ -48,49 +40,7 @@ class Game(App):
 
     def step(self):
         if self.l > 0:
-            for player in self.getSpritesbyClass(Person):
-                player.step()
-            if self.Pal.collidingWith(self.os) == False:
-                self.sc += 1
-            if self.Pal.collidingWith(self.os) == True:
-                self.sc = 0
-            if self.sc == 160:
-                self.x += 1
-                self.score = "Score: "+str(self.x)
-                self.scorprint.destroy()
-                self.scorprint = Score(self, (10,10))
-                self.sc = 0
-            if self.steprun == 0:
-                if self.Pal.collidingWith(self.os) == True:
-                    self.l -= 1
-                    self.lives = "Lives: "+str(self.l)
-                    self.livprint.destroy()
-                    self.livprint = Lives(self, (Game.width-260,10))
-                    self.steprun +=1
-            else:
-                self.steprun += 1
-            if self.steprun == 16:
-                self.steprun = 0
-            self.bg1.x -= player.tv
-            self.bg2.x -= player.tv
-            if self.bg2.x >= 0:
-                self.bg1.x = self.bg2.x-1152
-            if self.bg1.x >= 0:
-                self.bg2.x = self.bg1.x-1152
-            if self.bg2.x <= 0:
-                self.bg1.x = self.bg2.x+1152
-            if self.bg1.x <= 0:
-                self.bg2.x = self.bg1.x+1152
-            for obs in self.getSpritesbyClass(ObstacleS):
-                obs.step()
-            if self.os.x and self.os.x > 2*Game.width:
-                self.os.destroy()
-                self.oss = ObstacleS((0,369))
-            if self.os.x and self.os.x > 1.25*Game.width or self.os.x and self.os.x < -3*Game.width/4:
-                self.os.destroy()
-                self.os = ObstacleS((-3*Game.width/4+1,369))
-        else:
-            self.gameprint = End(self, (Game.width/2-200,Game.height/2))
+            pass
 
 Game().run()
 '''class Textrunner(App):
