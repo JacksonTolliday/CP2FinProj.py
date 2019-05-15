@@ -35,6 +35,9 @@ class Game(App):
 
     def enter(self, event):
         self.x = "c or g?"
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "enter", self.enter)
 
 
 Game().run()
