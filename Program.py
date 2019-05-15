@@ -3,7 +3,8 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 class Score(Sprite):
 
     def __init__(self, app, position):
-        asset = TextAsset(app.score, style="15pt Times New Roman", width=250, fill=Color(0x000000, 1.0))
+        global Game
+        asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
         
 
