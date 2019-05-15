@@ -7,7 +7,7 @@ class Textrunner(App):
         self.listenKeyEvent("keydown", "enter", self.nxt)
 
 
-    def nxt:
+    def nxt(self, event):
         for x in prompts:
             print(x)
             x = x+1
