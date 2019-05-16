@@ -29,7 +29,7 @@ class Game(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.score = ""
-        self.scorprint = Start(self, (10,Game.height-150))
+        self.scorprint = Start(self, (Game.width/2,Game.height/2))
         self.first()
 
     def first(self):
