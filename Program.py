@@ -32,6 +32,9 @@ class Game(App):
         self.scorprint = Start(self, (Game.width/2,Game.height/2))
         self.first()
 
+    def step(self):
+        pass
+
     def first(self):
         self.score = "Press Enter to Continue"
         self.scorprint.destroy()
