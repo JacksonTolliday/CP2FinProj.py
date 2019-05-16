@@ -45,7 +45,22 @@ class Game(App):
         self.score = "c or g?"
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
-        self.listenKeyEvent("keydown", "enter", self.enter)
+        self.listenKeyEvent("keydown", "c", self.c)
+        self.listenKeyEvent("keydown", "g", self.g)
+
+    def c(self, event):
+        self.score = "c. c or g?"
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "c", self.c)
+        self.listenKeyEvent("keydown", "g", self.g)
+
+    def g(self, event):
+        self.score = "g. c or g?"
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "c", self.c)
+        self.listenKeyEvent("keydown", "g", self.g)
 
 
 Game().run()
