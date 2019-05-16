@@ -29,13 +29,13 @@ class Game(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.score = ""
-        self.scorprint = Start(self, ((Game.width/2)-100,Game.height/2))
+        self.scorprint = Start(self, (Game.width/2,Game.height/2))
         self.first()
 
     def first(self):
         self.score = "Press Enter to Continue"
         self.scorprint.destroy()
-        self.scorprint = Start(self, (Game.width/2,Game.height/2))
+        self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
