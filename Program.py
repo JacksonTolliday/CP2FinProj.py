@@ -1,6 +1,6 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
 
-class Start(Sprite)
+class Start(Sprite):
     def __init__(self, app, position):
         global Game
         asset = TextAsset(app.score, style="30pt Times New Roman", width=Game.width, fill=Color(0x000000, 1.0))
