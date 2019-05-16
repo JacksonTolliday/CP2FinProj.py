@@ -35,7 +35,7 @@ class Game(App):
     def first(self):
         self.score = "Press Enter to Continue"
         self.scorprint.destroy()
-        self.scorprint = Score(self, (10,Game.height-150))
+        self.scorprint = Start(self, (Game.width/2,Game.height/2))
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
