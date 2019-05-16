@@ -1,5 +1,12 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
 
+class Start(Sprite)
+    def __init__(self, app, position):
+        global Game
+        asset = TextAsset(app.score, style="30pt Times New Roman", width=Game.width, fill=Color(0x000000, 1.0))
+        super().__init__(asset, position)
+
+
 class Score(Sprite):
     def __init__(self, app, position):
         global Game
@@ -23,7 +30,7 @@ class Game(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.score = ""
-        self.scorprint = Score(self, (10,Game.height-150))
+        self.scorprint = Start(self, (10,Game.height-150))
         self.first()
 
     def first(self):
@@ -33,7 +40,6 @@ class Game(App):
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
-        print("enter")
         self.score = "c or g?"
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
