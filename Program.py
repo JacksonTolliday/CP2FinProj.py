@@ -28,17 +28,14 @@ class Game(App):
         black = Color(0, 1)
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
-        self.score = ""
-        self.scorprint = Start(self, (Game.width/2,Game.height/2))
+        self.score = "Press Enter to Continue"
+        self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
         self.first()
 
     def step(self):
         pass
 
     def first(self):
-        self.score = "Press Enter to Continue"
-        self.scorprint.destroy()
-        self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
