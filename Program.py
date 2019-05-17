@@ -22,11 +22,12 @@ class End(Sprite):
 class Game(App):
     def __init__(self):
         super().__init__()
-        textbox = Color(xFAF0E6, 1)
-        line = LineStyle(1, black)
-        bg_asset = RectangleAsset(self.width, self.height, line, textbox)
+        textbox = Color(0xFAF0E6, 1)
+        dark = Color(0x2F4F4F, 1)
+        line = LineStyle(1, dark)
+        bg_asset = RectangleAsset(self.width/, self.height, line, textbox)
         self.score = "Press Enter to Continue"
-        self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
+        self.scorprint = Start(self, (self.width/2-200, self.height/2))
         self.flashlight = False
         self.jacket = False
         self.boxcheck = False
