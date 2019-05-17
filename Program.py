@@ -24,10 +24,11 @@ class Game(App):
         super().__init__()
         textbox = Color(0xFAF0E6, 1)
         dark = Color(0x2F4F4F, 1)
-        line = LineStyle(1, dark)
-        bg_asset = RectangleAsset(self.width/, self.height, line, textbox)
+        line = LineStyle(2, dark)
+        bg_asset = RectangleAsset(self.width, self.height, line, textbox)
+        self.bg = Sprite(bg_asset, (0,0))
         self.score = "Press Enter to Continue"
-        self.scorprint = Start(self, (Game.width/2-200, Game.height/2))
+        self.scorprint = Start(self, (self.width/2-200, self.height/2))
         self.flashlight = False
         self.jacket = False
         self.boxcheck = False
