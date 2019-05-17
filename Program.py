@@ -101,14 +101,23 @@ class Game(App):
             self.listenKeyEvent("keydown", "k", self.keyrings)
     def axs(self, event):
         self.ax = True
-        self.gate()
+        self.score = "You snag the ax, and carry it off towards the gate. Press Enter to continue."
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "enter", self.gate)
     def keyrings(self, event):
         self.keyring = True
-        self.gate()
+        self.score = "You snag the keys, stuff them in a pocket, and walk off towards the gate. Press Enter to continue."
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "enter", self.gate)
     def axkey(self, event):
         self.keyring = True
         self.ax = True
-        self.gate()
+        self.score = "You snag the ax and the keys, stuffing the keys in a pocket and carring off the ax towards the gate. Press Enter to continue."
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "enter", self.gate)
 
     def gate(self, event):
         if self.carout == False:
