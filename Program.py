@@ -93,10 +93,10 @@ class Game(App):
             self.scorprint = Score(self, (10,Game.height-150))
             self.listenKeyEvent("keydown", "enter", self.gate)
         else:
-            self.score = "You pop open the trunk, glancing around the back of the trunk. You can see a Wood Ax; who knows where that came from... who was the last person who rented this car? You pick it up, noticing what you hope is red paint spattered along it. You also see keyring, with tons of jumbled keys on it; looks like it had an ID tag on it too, but who knows what the name on it was: it looks as if it was worn off long ago. Press A to take the Ax, press K to take the keyring, or press B to take both."
+            self.score = "You pop open the trunk, glancing around the back of the trunk. You can see a Wood Ax; who knows where that came from... who was the last person who rented this car? You pick it up, noticing what you hope is red paint spattered along it. You also see keyring, with tons of jumbled keys on it; looks like it had an ID tag on it too, but who knows what the name on it was: it looks as if it was worn off long ago. Press A to take the Ax, press K to take the keyring, or press X to take both."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,Game.height-150))
-            self.listenKeyEvent("keydown", "b", self.axkey)
+            self.listenKeyEvent("keydown", "x", self.axkey)
             self.listenKeyEvent("keydown", "a", self.axs)
             self.listenKeyEvent("keydown", "k", self.keyrings)
     def axs(self, event):
