@@ -152,9 +152,9 @@ class Game(App):
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,Game.height-150))
             self.listenKeyEvent("keydown", "k", self.keytrial)
-            self.listenKeyEvent("keydown", "u", self.buzzer)
-            self.listenKeyEvent("keydown", "l", self.c)
-            self.listenKeyEvent("keydown", "b", self.buzzer)
+            self.listenKeyEvent("keydown", "u", self.barebreak)
+            self.listenKeyEvent("keydown", "a", self.axbreak)
+            self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.ax == True: 
         if self.keyring == True: 
 
