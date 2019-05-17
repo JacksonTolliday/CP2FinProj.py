@@ -20,14 +20,11 @@ class End(Sprite):
         super().__init__(asset, position)
 
 class Game(App):
-    """
-    Tutorial4 space game example.
-    """
     def __init__(self):
         super().__init__()
-        black = Color(0, 1)
-        noline = LineStyle(0, black)
-        bg_asset = RectangleAsset(self.width, self.height, noline, black)
+        textbox = Color(xFAF0E6, 1)
+        line = LineStyle(1, black)
+        bg_asset = RectangleAsset(self.width, self.height, line, textbox)
         self.score = "Press Enter to Continue"
         self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
         self.flashlight = False
@@ -38,6 +35,7 @@ class Game(App):
         self.carkeys = False
         self.ax = False
         self.keyring = False
+        self.alerted = False
         self.first()
 
     def step(self):
@@ -180,5 +178,11 @@ class Game(App):
             self.listenKeyEvent("keydown", "i", self.moreinvest)
 
     def buzzer(self, event):
+        self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. "
+        self.alerted = True
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "t", self.throughgate)
+        self.listenKeyEvent("keydown", "l", self.moreinvest)
 
 Game().run()
