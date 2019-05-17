@@ -34,7 +34,7 @@ class Game(App):
         self.jacket = False
         self.boxcheck = False
         self.trunkcheck = False
-        self.carlockedout = False
+        self.carout = False
         self.carkeys = False
         self.ax = False
         self.keyring = False
@@ -86,9 +86,9 @@ class Game(App):
         self.listenKeyEvent("keydown", "g", self.gate)
 
     def trunk(self, event):
-        if self.carkeys == False:
+        if self.carout == False:
             self.score = "You hop out the car, slamming the door behind you. It's bitterly cold out, and you're glad you grabbed your jacket. However, as you walk around to the trunk of your car and pull the handle, the trunk doesn't budge. When you head back around to the door you just got out of, it doesn't budge either. You realize that you left your keys in the car; you're locked out. With only one way left to go, as you don't want to freeze to death out in the middle of nowhere, you head towards the gate. Press Enter to continue."
-            self.carlockedout = True
+            self.carout = True
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,Game.height-150))
             self.listenKeyEvent("keydown", "enter", self.gate)
@@ -99,38 +99,56 @@ class Game(App):
             self.listenKeyEvent("keydown", "b", self.axkey)
             self.listenKeyEvent("keydown", "a", self.axs)
             self.listenKeyEvent("keydown", "k", self.keyrings)
-    def self.axs:
+    def axs(self, event):
         self.ax = True
         self.gate()
-    def self.keyrings:
+    def keyrings(self, event):
         self.keyring = True
         self.gate()
-    def self.axkey:
+    def axkey(self, event):
         self.keyring = True
         self.ax = True
         self.gate()
 
     def gate(self, event):
+        if self.carout == False:
+            if self.jacket == False:
+                self.score = "As you're leaving the car, you quickly grab the keys from the ignition; you don't want to leave these behind. You head up towards the gate, shivering against the bitter Autumn wind. If only you remembered your jacket.. Oh well. Even though the gate's old, ornate look looks like something out of an old mansion, you notice a buzzer; maybe to call up to open the gate. You could also look around for another way in; who knows if the buzzer even works. You could also head back to your car and check the trunk, maybe you've got something there to help. Press T to check the trunk, B to try the buzzer, or L to look for another way in."
+                self.carkeys = True
+                self.carout = True
+                self.scorprint.destroy()
+                self.scorprint = Score(self, (10,Game.height-150))
+                self.listenKeyEvent("keydown", "l", self.c)
+                self.listenKeyEvent("keydown", "b", self.buzzer)
+                self.listenKeyEvent("keydown", "t", self.trunk)
+            else:
+                self.score = "As you're leaving the car, you quickly grab the keys from the ignition; you don't want to leave these behind. You head up towards the gate, noticing the grass curling ominously against it's dull brass frame. Even though it's old, ornate look looks like something out of an old mansion, you notice a buzzer; maybe to call up to open the gate. You could also look around for another way in; who knows if the buzzer even works. You could also head back to your car and check the trunk, maybe you've got something there to help. Press T to check the trunk, B to try the buzzer, or L to look for another way in."
+                self.carkeys = True
+                self.carout = True
+                self.scorprint.destroy()
+                self.scorprint = Score(self, (10,Game.height-150))
+                self.listenKeyEvent("keydown", "l", self.c)
+                self.listenKeyEvent("keydown", "b", self.buzzer)
+                self.listenKeyEvent("keydown", "t", self.trunk)
+        else:
+            if self.jacket == False:
+                self.score = "You head towards the gate, shivering against the bitter Autumn wind. If only you remembered your jacket.. Oh well. Even though the gate's old, ornate look looks like something out of an old mansion, you notice a buzzer; maybe to call up to open the gate. You could also look around for another way in; who knows if the buzzer even works. Press B to try the buzzer, or L to look for another way in."
+                self.carkeys = True
+                self.scorprint.destroy()
+                self.scorprint = Score(self, (10,Game.height-150))
+                self.listenKeyEvent("keydown", "l", self.c)
+                self.listenKeyEvent("keydown", "b", self.buzzer)
+            else:
+                self.score = "You head towards the gate, noticing the grass curling ominously against it's dull brass frame. Even though it's old, ornate look looks like something out of an old mansion, you notice a buzzer; maybe to call up to open the gate. You could also look around for another way in; who knows if the buzzer even works. Press B to try the buzzer, or L to look for another way in."
+                self.carkeys = True
+                self.scorprint.destroy()
+                self.scorprint = Score(self, (10,Game.height-150))
+                self.listenKeyEvent("keydown", "l", self.c)
+                self.listenKeyEvent("keydown", "b", self.buzzer)
+
+    def c(self, event):
         if self.ax == True or self.keyring == True:
-            if self.carlockedout == False:
-                if self.jacket == False:
-                    self.score = "As you're leaving the car, you quickly grab the keys from the ignition; you don't want to leave these behind. You head up towards the gate, shivering against the bitter Autumn wind. If only you remembered your jacket.. Oh well. Even though it's old, ornate look looks like something out of an old mansion, you notice a buzzer; maybe to call up to open the gate. You could also look around for another way in; who knows if the buzzer even works. You could also head back to your car and check the trunk, maybe you've got something there to help. Press T to check the trunk, B to try the buzzer, or L to look for another way in."
-                    self.carkeys = True
-                    self.scorprint.destroy()
-                    self.scorprint = Score(self, (10,Game.height-150))
-                    self.listenKeyEvent("keydown", "l", self.c)
-                    self.listenKeyEvent("keydown", "b", self.g)
-                    self.listenKeyEvent("keydown", "t", self.trunk)
-                else:
-                    self.score = "As you're leaving the car, you quickly grab the keys from the ignition; you don't want to leave these behind. You head up towards the gate, noticing the grass curling ominously against it's dull brass frame. Even though it's old, ornate look looks like something out of an old mansion, you notice a buzzer; maybe to call up to open the gate. You could also look around for another way in; who knows if the buzzer even works. You could also head back to your car and check the trunk, maybe you've got something there to help. Press T to check the trunk, B to try the buzzer, or L to look for another way in."
-                    self.carkeys = True
-                    self.scorprint.destroy()
-                    self.scorprint = Score(self, (10,Game.height-150))
-                    self.listenKeyEvent("keydown", "l", self.c)
-                    self.listenKeyEvent("keydown", "b", self.buzzer)
-                    self.listenKeyEvent("keydown", "t", self.trunk)
-
-
+            
 Game().run()
 '''
 HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
