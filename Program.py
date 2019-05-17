@@ -155,7 +155,20 @@ class Game(App):
             self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "a", self.axbreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
-        if self.ax == True: 
+        if self.ax == True:
+            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence."
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "u", self.barebreak)
+            self.listenKeyEvent("keydown", "a", self.axbreak)
+            self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.keyring == True: 
+            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges with your bare hands, and I to keep looking along the fence."
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "k", self.keytrial)
+            self.listenKeyEvent("keydown", "u", self.barebreak)
+            self.listenKeyEvent("keydown", "i", self.moreinvest)
+
 
 Game().run()
