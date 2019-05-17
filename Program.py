@@ -27,7 +27,7 @@ class Game(App):
         line = LineStyle(1, dark)
         bg_asset = RectangleAsset(self.width/, self.height, line, textbox)
         self.score = "Press Enter to Continue"
-        self.scorprint = Start(self, (self.width/2-200, self.height/2))
+        self.scorprint = Start(self, (Game.width/2-200, Game.height/2))
         self.flashlight = False
         self.jacket = False
         self.boxcheck = False
