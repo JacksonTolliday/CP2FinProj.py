@@ -32,6 +32,8 @@ class Game(App):
         self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
         self.flashlight = False
         self.jacket = False
+        self.boxcheck = False
+        self.trunkcheck = False
         self.first()
 
     def step(self):
@@ -44,19 +46,54 @@ class Game(App):
         self.score = "As your car sputters in the chilly fall air, sputtering as it runs out of gas without a station for at least the next 20 miles. You spot a old, rusty gate on the horizon through your dying headlights. You could have easily missed it this late at night, as the bushes around it hide it well. It looks like it could possibly lead to a house? Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around the gate for help. What do you do? Press C to look around your car, or G to investigate the gate."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
-        self.listenKeyEvent("keydown", "c", self.c)
-        self.listenKeyEvent("keydown", "g", self.g)
+        self.listenKeyEvent("keydown", "c", self.car)
+        self.listenKeyEvent("keydown", "g", self.gate)
 
-    def c(self, event):
-        self.score = "You chose to look around your car. As you glance around, you can see some objects that you haphazardly left on the back seat, a jacket and a flashlight. You pick them up; it would probably be a good idea to bring them if you're going to go outside. You also think that you probably have something in the glove box or in the trunk. To look in your glovebox, press G. To look in your trunk, press T."
+    def car(self, event):
+        self.score = "You chose to look around your car. As you glance around, you can see some objects that you haphazardly left on the back seat, a jacket and a flashlight. You pick them up; it would probably be a good idea to bring them if you're going to go outside. You also think that you probably have something in the glove box or in the trunk. To look in your glovebox, press B. To look in your trunk, press T. To leave your car and investigate the gate, press G."
         self.flashlight = True
         self.jacket = True
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
-        self.listenKeyEvent("keydown", "c", self.t)
-        self.listenKeyEvent("keydown", "g", self.g1)
+        self.listenKeyEvent("keydown", "t", self.trunk)
+        self.listenKeyEvent("keydown", "b", self.box)
+        self.listenKeyEvent("keydown", "g", self.gate)
 
-    def g(self, event):
+    def box(self, event):
+        self.score = "You quickly pop open the glovebox, checking to see if you have anything inside. You come back with a cellphone; great news, unless you consider the fact that it's a long dead flip-phone you've never seen before. Someone must've left it in this car before you rented it. Oh well, there's some papers, but nothing else useful. Do you take the flip-phone? Press Y to take it, and N to leave it be."
+        self.scorprint.destroy()
+        self.boxcheck = True
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "y", self.flipye)
+        self.listenKeyEvent("keydown", "n", self.flipno)
+
+    def flipye(self, event):
+        if self.trunkcheck == False:
+            self.score = "You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk."
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "t", self.trunk)
+            self.listenKeyEvent("keydown", "g", self.gate)
+        else:
+
+    def flipno(self, event):
+        if self.trunkcheck == False:
+            self.score = "You leave the flip-phone; what use is carrying around an old hunk of junk, it's just going to be another thing to keep track of. Press G to investigate the gate, press T to check the trunk."
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "t", self.trunk)
+            self.listenKeyEvent("keydown", "g", self.gate)
+        else:
+
+    def trunk(self, event):
+        if self.trunkcheck == False:
+            self.score = "You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk."
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "t", self.trunk)
+            self.listenKeyEvent("keydown", "g", self.gate)
+
+    def gate(self, event):
         self.score = "g. c or g?"
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
