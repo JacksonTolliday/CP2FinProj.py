@@ -203,7 +203,7 @@ class Game(App):
             self.alerted = True
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-            self.listenKeyEvent("keydown", "t", self.throughgate) #extend
+            self.listenKeyEvent("keydown", "t", self.throughgate)
             self.listenKeyEvent("keydown", "l", self.moreinvest) #extend
             self.listenKeyEvent("keydown", "c", self.carreturn) #extend
         else:
@@ -211,7 +211,13 @@ class Game(App):
             self.alerted = True
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-            self.listenKeyEvent("keydown", "t", self.throughgate) #extend
+            self.listenKeyEvent("keydown", "t", self.throughgate)
             self.listenKeyEvent("keydown", "l", self.moreinvest) #extend
+
+    def throughgate(self, event):
+        self.unlistenKeyEvent("keydown", "t", self.throughgate)
+        self.score = "You press against the gate, shoving yourself through it. It's a tight squeeze, but you push yourself through, stumbling out on the other side. However, the pressure you put on the gate must've been too much for it, as it falls closed behind you. FIN"
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
 
 Game().run()
