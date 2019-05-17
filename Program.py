@@ -179,5 +179,6 @@ class Game(App):
             self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
 
+    def buzzer(self, event):
 
 Game().run()
