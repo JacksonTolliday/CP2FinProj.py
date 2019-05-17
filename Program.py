@@ -147,44 +147,13 @@ class Game(App):
                 self.listenKeyEvent("keydown", "b", self.buzzer)
 
     def c(self, event):
-        if self.ax == True or self.keyring == True:
-            
+        if self.ax == True and self.keyring == True:
+            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence."
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "l", self.c)
+            self.listenKeyEvent("keydown", "b", self.buzzer)
+        if self.ax == True: 
+        if self.keyring == True: 
 
 Game().run()
-'''
-HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-
-class Textrunner(App):
-    def __init__(self):
-        super().__init__()
-        Txt = TextAsset(Textrunner.prompts, style="30pt Times New Roman", width=400, fill=Color(0x000000, 1.0))
-        self.listenKeyEvent("keydown", "enter", self.nxt)
-        self.x = 0
-
-
-    def nxt(self, event):
-        for x in self.prompts:
-            print(x)
-            x = x+1
-
-    def step(self):
-        if self.x == 0:
-            self.prompts = ("In car, gates in front block way forward. C to investigate car, G to investigate gate.")
-            self.listenKeyEvent("keydown", "c", self.x=1)
-            self.listenKeyEvent("keydown", "g", self.x=2)
-
-        if self.x == 1:
-            self.prompts = ("")
-            self.x == 2:
-        if self.x == 2:
-            self.prompts = ("")
-            self.x == 3:
-        if self.x == 3:
-            self.prompts = ("")
-            self.x == 4:
-        if self.x == 4:
-            self.prompts = ("")
-            self.x == 5:
-        if self.x == 5:
-            self.prompts = ("")
-            self.x == 6:'''
