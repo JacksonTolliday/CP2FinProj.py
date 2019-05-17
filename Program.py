@@ -39,7 +39,7 @@ class Game(App):
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
-        self.score = "c or g?"
+        self.score = "As your car sputters, running out of gas without a station for at least 20 miles. You spot a gate on the horizon,"
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
         self.listenKeyEvent("keydown", "c", self.c)
