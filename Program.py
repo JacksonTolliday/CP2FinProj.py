@@ -47,7 +47,7 @@ class Game(App):
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
-        self.score = "As your car sputters in the chilly fall air, sputtering as it runs out of gas without a station for at least the next 20 miles. You spot a old, rusty gate on the horizon through your dying headlights. You could have easily missed it this late at night, as the bushes around it hide it well. It looks like it could possibly lead to a house? Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around the gate for help. What do you do? Press C to look around your car, or G to investigate the gate."
+        self.score = "As your car limps along the roadway, through your weak, dying headlights you spot what looks like a metal gate on the horizon. It came into view just as your car falters in the chilly fall air, sputtering as it runs out of gas. You could have easily missed it this late at night, as the bushes around it hide it's frame well. It looks like it could possibly lead to a house? Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around the gate for help. What do you do? Press C to look around your car, or G to investigate the gate."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,(Game.height/3)*2+5))
         self.listenKeyEvent("keydown", "c", self.car)
@@ -172,14 +172,14 @@ class Game(App):
             self.listenKeyEvent("keydown", "a", self.axbreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.keyring == True: 
-            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges with your bare hands, and I to keep looking along the fence."
+            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges, and I to keep looking along the fence."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "k", self.keytrial)
             self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.ax == False and self.keyring == False:
-            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges with your bare hands, and I to keep looking along the fence."
+            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges, and I to keep looking along the fence."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "u", self.barebreak)
