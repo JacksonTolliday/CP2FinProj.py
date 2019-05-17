@@ -9,7 +9,7 @@ class Start(Sprite):
 class Score(Sprite):
     def __init__(self, app, position):
         global Game
-        asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width-20, fill=Color(0x000000, 1.0))
+        asset = TextAsset(app.score, style="15pt Times New Roman", width=Game.width-10, fill=Color(0x000000, 1.0))
         super().__init__(asset, position)
         
     
@@ -39,7 +39,7 @@ class Game(App):
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
-        self.score = "As your car sputters, running out of gas without a station for at least 20 miles. You spot a gate on the horizon,"
+        self.score = "As your car sputters, running out of gas without a station for at least 20 miles. You spot a old, rusty gate on the horizon, looking like it could lead to a house. Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around it for help."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
         self.listenKeyEvent("keydown", "c", self.c)
