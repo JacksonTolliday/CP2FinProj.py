@@ -39,18 +39,18 @@ class Game(App):
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
-        self.score = "As your car sputters, running out of gas without a station for at least 20 miles. You spot a old, rusty gate on the horizon, looking like it could lead to a house. Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around it for help. What do you do? Press C to look around your car, or G to investigate the gate."
+        self.score = "As your car sputters in the chilly fall air, sputtering as it runs out of gas without a station for at least the next 20 miles. You spot a old, rusty gate on the horizon, looking like it could lead to a house. Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around it for help. What do you do? Press C to look around your car, or G to investigate the gate."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
         self.listenKeyEvent("keydown", "c", self.c)
         self.listenKeyEvent("keydown", "g", self.g)
 
     def c(self, event):
-        self.score = "c. c or g?"
+        self.score = "You chose to look around your car. As you glance around, you can see some objects that you haphazardly left on the back seat, a jacket and a flashlight. You pick them up; it would pr. You also think that you probably have something in the glove box or in the trunk. To look in your glovebox, press G. To look in your trunk, press T."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
-        self.listenKeyEvent("keydown", "c", self.c)
-        self.listenKeyEvent("keydown", "g", self.g)
+        self.listenKeyEvent("keydown", "c", self.t)
+        self.listenKeyEvent("keydown", "g", self.g1)
 
     def g(self, event):
         self.score = "g. c or g?"
