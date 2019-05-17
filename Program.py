@@ -129,7 +129,7 @@ class Game(App):
         self.listenKeyEvent("keydown", "enter", self.gate)
 
     def gate(self, event):
-        self.unlistenKeyEvent("keydown", "enter", self.gate
+        self.unlistenKeyEvent("keydown", "enter", self.gate)
         self.unlistenKeyEvent("keydown", "g", self.gate)
         if self.carout == False:
             if self.jacket == False:
