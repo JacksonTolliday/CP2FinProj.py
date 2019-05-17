@@ -108,28 +108,27 @@ class Game(App):
     def axs(self, event):
         self.unlistenKeyEvent("keydown", "a", self.axs)
         self.ax = True
-        self.score = "You snag the ax, and carry it off towards the gate. Press Enter to continue."
+        self.score = "You snag the ax, and carry it off towards the gate. Press G to continue to the gate."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-        self.listenKeyEvent("keydown", "enter", self.gate)
+        self.listenKeyEvent("keydown", "g", self.gate)
     def keyrings(self, event):
         self.unlistenKeyEvent("keydown", "k", self.keyrings)
         self.keyring = True
-        self.score = "You snag the keys, stuff them in a pocket, and walk off towards the gate. Press Enter to continue."
+        self.score = "You snag the keys, stuff them in a pocket, and walk off towards the gate. Press G to continue to the gate."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-        self.listenKeyEvent("keydown", "enter", self.gate)
+        self.listenKeyEvent("keydown", "g", self.gate)
     def axkey(self, event):
         self.unlistenKeyEvent("keydown", "x", self.axkey)
         self.keyring = True
         self.ax = True
-        self.score = "You snag the ax and the keys, stuffing the keys in a pocket and carring off the ax towards the gate. Press Enter to continue."
+        self.score = "You snag the ax and the keys, stuffing the keys in a pocket and carring off the ax towards the gate. Press G to continue to the gate."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-        self.listenKeyEvent("keydown", "enter", self.gate)
+        self.listenKeyEvent("keydown", "g", self.gate)
 
     def gate(self, event):
-        self.unlistenKeyEvent("keydown", "enter", self.gate)
         self.unlistenKeyEvent("keydown", "g", self.gate)
         if self.carout == False:
             if self.jacket == False:
