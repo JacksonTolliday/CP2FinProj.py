@@ -30,6 +30,8 @@ class Game(App):
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         self.score = "Press Enter to Continue"
         self.scorprint = Start(self, (Game.width/2-200,Game.height/2))
+        self.flashlight = False
+        self.jacket = False
         self.first()
 
     def step(self):
@@ -47,6 +49,8 @@ class Game(App):
 
     def c(self, event):
         self.score = "You chose to look around your car. As you glance around, you can see some objects that you haphazardly left on the back seat, a jacket and a flashlight. You pick them up; it would probably be a good idea to bring them if you're going to go outside. You also think that you probably have something in the glove box or in the trunk. To look in your glovebox, press G. To look in your trunk, press T."
+        self.flashlight = True
+        self.jacket = True
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
         self.listenKeyEvent("keydown", "c", self.t)
