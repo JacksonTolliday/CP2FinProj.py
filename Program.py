@@ -157,7 +157,7 @@ class Game(App):
 
     def c(self, event):
         if self.ax == True and self.keyring == True:
-            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence."
+            self.score = "You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "k", self.keytrial)
@@ -165,33 +165,34 @@ class Game(App):
             self.listenKeyEvent("keydown", "a", self.axbreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.ax == True:
-            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence."
+            self.score = "You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "a", self.axbreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.keyring == True: 
-            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges, and I to keep looking along the fence."
+            self.score = "You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges, and I to keep looking along the fence."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "k", self.keytrial)
             self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
         if self.ax == False and self.keyring == False:
-            self.score = "You head look around the gate, heading to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges, and I to keep looking along the fence."
+            self.score = "You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges, and I to keep looking along the fence."
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest)
 
     def buzzer(self, event):
-        
-            self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. The gate makes a weak whining noise, and it creaks open, just enough for you to push yourself through sideways. I mean it opened, but it did strike you as more than a little ominous... Press T to continue through the gate, or press L to look around for another way in."
+        if carkeys == True:
+            self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. The gate makes a weak whining noise, and it creaks open, just enough for you to push yourself through sideways. I mean it opened, but it did strike you as more than a little ominous... Press T to continue through the gate, press L to look around for another way in, or press C to return to your car."
             self.alerted = True
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "t", self.throughgate)
             self.listenKeyEvent("keydown", "l", self.moreinvest)
+            self.listenKeyEvent("keydown", "c", self.careturn)
 
 Game().run()
