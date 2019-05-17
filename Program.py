@@ -34,6 +34,7 @@ class Game(App):
         self.jacket = False
         self.boxcheck = False
         self.trunkcheck = False
+        self.carlockedout = False
         self.first()
 
     def step(self):
@@ -68,38 +69,38 @@ class Game(App):
         self.listenKeyEvent("keydown", "n", self.flipno)
 
     def flipye(self, event):
-        if self.trunkcheck == False:
-            self.score = "You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk."
-            self.scorprint.destroy()
-            self.scorprint = Score(self, (10,Game.height-150))
-            self.listenKeyEvent("keydown", "t", self.trunk)
-            self.listenKeyEvent("keydown", "g", self.gate)
-        else:
-
-    def flipno(self, event):
-        if self.trunkcheck == False:
-            self.score = "You leave the flip-phone; what use is carrying around an old hunk of junk, it's just going to be another thing to keep track of. Press G to investigate the gate, press T to check the trunk."
-            self.scorprint.destroy()
-            self.scorprint = Score(self, (10,Game.height-150))
-            self.listenKeyEvent("keydown", "t", self.trunk)
-            self.listenKeyEvent("keydown", "g", self.gate)
-        else:
-
-    def trunk(self, event):
-        if self.trunkcheck == False:
-            self.score = "You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk."
-            self.scorprint.destroy()
-            self.scorprint = Score(self, (10,Game.height-150))
-            self.listenKeyEvent("keydown", "t", self.trunk)
-            self.listenKeyEvent("keydown", "g", self.gate)
-
-    def gate(self, event):
-        self.score = "g. c or g?"
+        self.score = "You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
-        self.listenKeyEvent("keydown", "c", self.c)
-        self.listenKeyEvent("keydown", "g", self.g)
+        self.listenKeyEvent("keydown", "t", self.trunk)
+        self.listenKeyEvent("keydown", "g", self.gate)
 
+    def flipno(self, event):
+        self.score = "You leave the flip-phone; what use is carrying around an old hunk of junk, it's just going to be another thing to keep track of. Press G to investigate the gate, press T to check the trunk."
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "t", self.trunk)
+        self.listenKeyEvent("keydown", "g", self.gate)
+
+    def trunk(self, event):
+        self.score = "You hop out the car, slamming the door behind you. It's bitterly cold out, and you're glad you grabbed your jacket. However, as you walk around to the trunk of your car and pull the handle, the trunk doesn't budge. When you head back around to the door you just got out of, it doesn't budge either. You realize that you left your keys in the car; you're locked out. With only one way left to go, as you don't want to freeze to death out in the middle of nowhere, you head towards the gate. Press Enter to continue."
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,Game.height-150))
+        self.listenKeyEvent("keydown", "enter", self.gatelocked)
+
+    def gate(self, event):
+        if self.jacket == False:
+            self.score = "As you're leaving the car, you quickly grab the keys from the ignition; you don't want to leave these behind. You head up towards the gate, shivering against the bitter Autumn wind. If only you remembered your jacket.. Oh well. "
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "c", self.c)
+            self.listenKeyEvent("keydown", "g", self.g)
+        else:
+            self.score = "As you're leaving the car, you quickly grab the keys from the ignition; you don't want to leave these behind. You head up towards the gate, shivering against the bitter Autumn wind. If only you remembered your jacket.. Oh well. "
+            self.scorprint.destroy()
+            self.scorprint = Score(self, (10,Game.height-150))
+            self.listenKeyEvent("keydown", "c", self.c)
+            self.listenKeyEvent("keydown", "g", self.g)
 
 Game().run()
 '''
