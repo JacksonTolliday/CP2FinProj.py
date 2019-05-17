@@ -46,7 +46,7 @@ class Game(App):
         self.listenKeyEvent("keydown", "g", self.g)
 
     def c(self, event):
-        self.score = "You chose to look around your car. As you glance around, you can see some objects that you haphazardly left on the back seat, a jacket and a flashlight. You pick them up; it would pr. You also think that you probably have something in the glove box or in the trunk. To look in your glovebox, press G. To look in your trunk, press T."
+        self.score = "You chose to look around your car. As you glance around, you can see some objects that you haphazardly left on the back seat, a jacket and a flashlight. You pick them up; it would probably be a good idea to bring them if you're going to go outside. You also think that you probably have something in the glove box or in the trunk. To look in your glovebox, press G. To look in your trunk, press T."
         self.scorprint.destroy()
         self.scorprint = Score(self, (10,Game.height-150))
         self.listenKeyEvent("keydown", "c", self.t)
