@@ -199,7 +199,7 @@ class Game(App):
     def buzzer(self, event):
         self.unlistenKeyEvent("keydown", "b", self.buzzer)
         if self.carkeys == True:
-            self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. The gate makes a weak whining noise, and it creaks open, just enough for you to push yourself through sideways. I mean it opened, but it did strike you as more than a little ominous... Press T to continue through the gate, press L to look around for another way in, or press C to return to your car."
+            self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. The gate makes a weak whining noise, and it creaks open, just enough for you to push yourself through sideways. I mean it opened, but it did strike you as more than a little ominous... Press T to continue through the gate, press i to look around for another way in, or press C to return to your car."
             self.alerted = True
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
@@ -207,7 +207,7 @@ class Game(App):
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
             self.listenKeyEvent("keydown", "c", self.carreturn) #extend
         else:
-            self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. The gate makes a weak whining noise, and it creaks open, just enough for you to push yourself through sideways. I mean it opened, but it did strike you as more than a little ominous... Press T to continue through the gate, press L to look around for another way in."
+            self.score = "You hold down the buzzer, leaning forward to what looks like a microphone, but before you can speak, the mic crackles loudly, interrupting you. The crackling continues for a few seconds, but then shuts off. The gate makes a weak whining noise, and it creaks open, just enough for you to push yourself through sideways. I mean it opened, but it did strike you as more than a little ominous... Press T to continue through the gate, press i to look around for another way in."
             self.alerted = True
             self.scorprint.destroy()
             self.scorprint = Score(self, (10,(Game.height/3)*2+5))
