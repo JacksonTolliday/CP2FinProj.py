@@ -144,22 +144,22 @@ class Game(App):
         if self.ax == True and self.keyring == True:
             self.refresh("You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence.")
             self.listenKeyEvent("keydown", "k", self.keytrial) #extend
-            self.listenKeyEvent("keydown", "u", self.barebreak) #extend
+            self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "a", self.axbreak) #extend
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
         if self.ax == True:
             self.refresh("You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges with your bare hands, A to try and break the gate's hinges with the Ax, and I to keep looking along the fence.")
-            self.listenKeyEvent("keydown", "u", self.barebreak) #extend
+            self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "a", self.axbreak) #extend
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
         if self.keyring == True: 
             self.refresh("You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. I mean, who knows? Maybe you could try one of the keys on the massive keyring you found; it might work... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press K to try a key on the lock, U to try and snap the gate's hinges, and I to keep looking along the fence.")
             self.listenKeyEvent("keydown", "k", self.keytrial) #extend
-            self.listenKeyEvent("keydown", "u", self.barebreak) #extend
+            self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
         if self.ax == False and self.keyring == False:
             self.refresh("You walk around the gate, looking to the right and left. You notice the hinges look brittle; the gate looks old enough that if you hit it hard enough, it might just fall over. There's also a well hidden keyhole under the buzzer; barely visible, but definitely there. You don't have any keys though... then again, you could keep looking for a way in along the fence extending on either side of the gate. Press U to try and snap the gate's hinges, and I to keep looking along the fence.")
-            self.listenKeyEvent("keydown", "u", self.barebreak) #extend
+            self.listenKeyEvent("keydown", "u", self.barebreak)
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
 
     def buzzer(self, event):
@@ -186,8 +186,28 @@ class Game(App):
 
     def barebreak(self, event):
         self.unlistenKeyEvent("keydown", "u", self.throughgate)
-        self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon.")
+        if self.ax == True and self.keyring == True:
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well, it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, or press K to try one of the keys you have on your keyring, or press A to try and break the gate down with your axe.")
+            self.listenKeyEvent("keydown", "k", self.keytrial) #extend
+            self.listenKeyEvent("keydown", "a", self.axbreak) #extend
+            self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
+        if self.ax == True:
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well,  it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, or press A to try and break the gate down with your axe.")
+            self.listenKeyEvent("keydown", "a", self.axbreak) #extend
+            self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
+        if self.keyring == True: 
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well,  it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, or press K to try one of the keys you have on your keyring.")
+            self.listenKeyEvent("keydown", "k", self.keytrial) #extend
+            self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
+        if self.ax == False and self.keyring == False:
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well, it did seem unlikely that you'd be able to brute force it. Press I to try and find another way in.")
+            self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
 
-
+    def keytrial(self, event):
+        
+    def axbreak(self, event):
+        
+    def moreinvest(self, event):
+        
 
 Game().run()
