@@ -65,41 +65,31 @@ class Game(App):
 
     def box(self, event):
         self.unlistenKeyEvent("keydown", "b", self.box)
-        self.score = "You quickly pop open the glovebox, checking to see if you have anything inside. You come back with a cellphone; great news, unless you consider the fact that it's a long dead flip-phone you've never seen before. Someone must've left it in this car before you rented it. Oh well, there's some papers, but nothing else useful. Do you take the flip-phone? Press Y to take it, and N to leave it be."
-        self.scorprint.destroy()
+        self.refresh("You quickly pop open the glovebox, checking to see if you have anything inside. You come back with a cellphone; great news, unless you consider the fact that it's a long dead flip-phone you've never seen before. Someone must've left it in this car before you rented it. Oh well, there's some papers, but nothing else useful. Do you take the flip-phone? Press Y to take it, and N to leave it be.")
         self.boxcheck = True
-        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
         self.listenKeyEvent("keydown", "y", self.flipye)
         self.listenKeyEvent("keydown", "n", self.flipno)
 
     def flipye(self, event):
         self.unlistenKeyEvent("keydown", "y", self.flipye)
-        self.score = "You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk."
-        self.scorprint.destroy()
-        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
+        self.refresh("You grab the flip-phone; who knows, it might be useful. Press G to investigate the gate, press T to check the trunk.")
         self.listenKeyEvent("keydown", "t", self.trunk)
         self.listenKeyEvent("keydown", "g", self.gate)
 
     def flipno(self, event):
         self.unlistenKeyEvent("keydown", "n", self.flipno)
-        self.score = "You leave the flip-phone; what use is carrying around an old hunk of junk, it's just going to be another thing to keep track of. Press G to investigate the gate, press T to check the trunk."
-        self.scorprint.destroy()
-        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
+        self.refresh("You leave the flip-phone; what use is carrying around an old piece of junk, it's just going to be another thing to keep track of. Press G to investigate the gate, press T to check the trunk.")
         self.listenKeyEvent("keydown", "t", self.trunk)
         self.listenKeyEvent("keydown", "g", self.gate)
 
     def trunk(self, event): #extend... what if they are returning?
         self.unlistenKeyEvent("keydown", "t", self.trunk)
         if self.carout == False:
-            self.score = "You hop out the car, slamming the door behind you. It's bitterly cold out, and you're glad you grabbed your jacket. However, as you walk around to the trunk of your car and pull the handle, the trunk doesn't budge. When you head back around to the door you just got out of, it doesn't budge either. You realize that you left your keys in the car; you're locked out. With only one way left to go, as you don't want to freeze to death out in the middle of nowhere, you head towards the gate. Press Enter to continue."
+            self.refresh("You hop out the car, slamming the door behind you. It's bitterly cold out, and you're glad you grabbed your jacket. However, as you walk around to the trunk of your car and pull the handle, the trunk doesn't budge. When you head back around to the door you just got out of, it doesn't budge either. You realize that you left your keys in the car; you're locked out. With only one way left to go, as you don't want to freeze to death out in the middle of nowhere, you head towards the gate. Press Enter to continue.")
             self.carout = True
-            self.scorprint.destroy()
-            self.scorprint = Score(self, (10,(Game.height/3)*2+5))
             self.listenKeyEvent("keydown", "enter", self.gate)
         else:
-            self.score = "You pop open the trunk, glancing around the back of the trunk. You can see a Wood Ax; who knows where that came from... who was the last person who rented this car? You pick it up, noticing what you hope is red paint spattered along it. You also see keyring, with tons of jumbled keys on it; looks like it had an ID tag on it too, but who knows what the name on it was: it looks as if it was worn off long ago. Press A to take the Ax, press K to take the keyring, or press X to take both."
-            self.scorprint.destroy()
-            self.scorprint = Score(self, (10,(Game.height/3)*2+5))
+            self.refresh("You pop open the trunk, glancing around the back of the trunk. You can see a Wood Ax; who knows where that came from... who was the last person who rented this car? You pick it up, noticing what you hope is red paint spattered along it. You also see keyring, with tons of jumbled keys on it; looks like it had an ID tag on it too, but who knows what the name on it was: it looks as if it was worn off long ago. Press A to take the Ax, press K to take the keyring, or press X to take both.")
             self.listenKeyEvent("keydown", "x", self.axkey)
             self.listenKeyEvent("keydown", "a", self.axs)
             self.listenKeyEvent("keydown", "k", self.keyrings)
