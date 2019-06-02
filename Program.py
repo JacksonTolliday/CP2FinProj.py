@@ -1,10 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
 
-def refresh(x):
-    self.score = x
-    self.scorprint.destroy()
-    self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-
 class Start(Sprite):
     def __init__(self, app, position):
         global Game
@@ -44,6 +39,11 @@ class Game(App):
         self.keyring = False
         self.alerted = False
         self.first()
+
+    def refresh(self, x):
+        self.score = x
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
 
     def first(self):
         self.listenKeyEvent("keydown", "enter", self.enter)
