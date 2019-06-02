@@ -1,5 +1,10 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
 
+def refresh(x):
+    self.score = x
+    self.scorprint.destroy()
+    self.scorprint = Score(self, (10,(Game.height/3)*2+5))
+
 class Start(Sprite):
     def __init__(self, app, position):
         global Game
@@ -40,17 +45,14 @@ class Game(App):
         self.alerted = False
         self.first()
 
-    def refresh(x):
-        self.score = x
-        self.scorprint.destroy()
-        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
-
     def first(self):
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
         self.unlistenKeyEvent("keydown", "enter", self.enter)
-        refresh( "As your car limps along the roadway, through your weak, dying headlights you spot what looks like a metal gate on the horizon. It came into view just as your car falters in the chilly fall air, sputtering as it runs out of gas. You could have easily missed it this late at night, as the bushes around it hide it's frame well. It looks like it could possibly lead to a house? Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around the gate for help. What do you do? Press C to look around your car, or G to investigate the gate.")
+        self.score = "As your car limps along the roadway, through your weak, dying headlights you spot what looks like a metal gate on the horizon. It came into view just as your car falters in the chilly fall air, sputtering as it runs out of gas. You could have easily missed it this late at night, as the bushes around it hide it's frame well. It looks like it could possibly lead to a house? Your car creaks to a stop right outside of the gate, almost like it wants you to go looking around the gate for help. What do you do? Press C to look around your car, or G to investigate the gate."
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
         self.listenKeyEvent("keydown", "c", self.car)
         self.listenKeyEvent("keydown", "g", self.gate)
 
