@@ -40,8 +40,10 @@ class Game(App):
         self.alerted = False
         self.first()
 
-    def step(self):
-        pass
+    def refresh(x):
+        self.score = x
+        self.scorprint.destroy()
+        self.scorprint = Score(self, (10,(Game.height/3)*2+5))
 
     def first(self):
         self.listenKeyEvent("keydown", "enter", self.enter)
