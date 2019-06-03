@@ -40,7 +40,7 @@ class Game(App):
         self.keyring = False
         self.alerted = False
         self.first()
-        self.rando = random.randint(0,10)
+        self.randhmm = random.randint(0,10)
 
     def refresh(self, x):
         self.score = x
@@ -48,7 +48,7 @@ class Game(App):
         self.scorprint = Score(self, (10,(Game.height/3)*2+5))
 
     def first(self):
-        print(self.rando)
+        print(self.randhmm)
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
