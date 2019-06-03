@@ -39,6 +39,7 @@ class Game(App):
         self.ax = False
         self.keyring = False
         self.alerted = False
+        self.randhmm = 0
         self.first()
 
     def refresh(self, x):
@@ -207,8 +208,8 @@ class Game(App):
 
     def keytrial(self, event):
         self.unlistenKeyEvent("keydown", "k", self.keytrial)
-        randhmm = random.randint(0,13)
-        if randhmm == 13:
+        self.randhmm = random.randint(0,13)
+        if self.randhmm == 13:
             self.refresh("You try a key from the keyring you found... miraculously, it fits! Who'd have guessed that you had the key to the gate all along! Apparently you. The Gate creaks open, and you start up the long winding path towards whatever it kept hidden. END OF CHAPTER 1")
         else:
             if self.ax == True:
