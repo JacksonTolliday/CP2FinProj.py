@@ -248,5 +248,4 @@ class Game(App):
         self.unlistenKeyEvent("keydown", "o", self.throughfence)
         self.refresh("You decide you've got nowhere else to go but forward... so you head through the hole in the fence. END OF CHAPTER 1")
 
-
 Game().run()
