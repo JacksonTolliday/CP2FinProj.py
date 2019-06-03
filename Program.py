@@ -39,7 +39,6 @@ class Game(App):
         self.ax = False
         self.keyring = False
         self.alerted = False
-        self.randhmm = random.randint(0,10)
         self.first()
 
     def refresh(self, x):
@@ -190,17 +189,17 @@ class Game(App):
     def barebreak(self, event):
         self.unlistenKeyEvent("keydown", "u", self.throughgate)
         if self.ax == True and self.keyring == True:
-            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well, it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, or press K to try one of the keys you have on your keyring, or press A to try and break the gate down with your axe.")
-            self.listenKeyEvent("keydown", "k", self.keytrial) #extend
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well, it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, press K to try one of the keys you have on your keyring, or press A to try and break the gate down with your axe.")
+            self.listenKeyEvent("keydown", "k", self.keytrial)
             self.listenKeyEvent("keydown", "a", self.axbreak) #extend
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
         if self.ax == True:
-            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well,  it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, or press A to try and break the gate down with your axe.")
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well,  it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in or press A to try and break the gate down with your axe.")
             self.listenKeyEvent("keydown", "a", self.axbreak) #extend
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
         if self.keyring == True: 
-            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well,  it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in, or press K to try one of the keys you have on your keyring.")
-            self.listenKeyEvent("keydown", "k", self.keytrial) #extend
+            self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well,  it did seem unlikely that you'd be able to brute force it that way. Press I to try and find another way in or press K to try one of the keys you have on your keyring.")
+            self.listenKeyEvent("keydown", "k", self.keytrial)
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
         if self.ax == False and self.keyring == False:
             self.refresh("As you slam you hands against the old gate, the best you can do is get a high squeal from the hinges: they don't look like they're budging anytime soon. Oh well, it did seem unlikely that you'd be able to brute force it. Press I to try and find another way in.")
@@ -208,7 +207,19 @@ class Game(App):
 
     def keytrial(self, event):
         self.unlistenKeyEvent("keydown", "k", self.keytrial)
-        self.refresh("You ")
+        randhmm = random.randint(0,13)
+        if randhmm == 13:
+            self.refresh("You try a key from the keyring you found... miraculously, it fits! Who'd have guessed that you had the key to the gate all along! Apparently you. The Gate creaks open, and you start up the long winding path towards whatever it kept hidden. END OF CHAPTER 1")
+        else:
+            if self.ax == True:
+                self.refresh("You try a key from the keyring you found... and surprising no one, it doesn't work. You turn in a couple times, but the key gains no purchase and you're stuck where you were. You can still try another key by pressing K, Press I to try and find another way in, or press A to try and break the gate down with your axe. ")
+                self.listenKeyEvent("keydown", "k", self.keytrial)
+                self.listenKeyEvent("keydown", "a", self.axbreak) #extend
+                self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
+            else:
+                self.refresh("You try a key from the keyring you found... and surprising no one, it doesn't work. You turn in a couple times, but the key gains no purchase and you're stuck where you were. You can still try another key by pressing K, or Press I to try and find another way in.")
+                self.listenKeyEvent("keydown", "k", self.keytrial)
+                self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
 
     def axbreak(self, event):
         self.unlistenKeyEvent("keydown", "a", self.axbreak)
