@@ -40,6 +40,7 @@ class Game(App):
         self.keyring = False
         self.alerted = False
         self.first()
+        self.rando = random.randint(0,10)
 
     def refresh(self, x):
         self.score = x
