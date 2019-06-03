@@ -48,7 +48,6 @@ class Game(App):
         self.scorprint = Score(self, (10,(Game.height/3)*2+5))
 
     def first(self):
-        print(self.randhmm)
         self.listenKeyEvent("keydown", "enter", self.enter)
 
     def enter(self, event):
