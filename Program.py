@@ -1,4 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, TextAsset
+import random
 
 class Start(Sprite):
     def __init__(self, app, position):
@@ -204,10 +205,16 @@ class Game(App):
             self.listenKeyEvent("keydown", "i", self.moreinvest) #extend
 
     def keytrial(self, event):
-        
+        self.unlistenKeyEvent("keydown", "k", self.keytrial)
+        self.refresh("You ")
+
     def axbreak(self, event):
-        
+        self.unlistenKeyEvent("keydown", "a", self.axbreak)
+        self.refresh("")
+
     def moreinvest(self, event):
-        
+        self.unlistenKeyEvent("keydown", "i", self.moreinvest)
+        self.refresh("")
+
 
 Game().run()
